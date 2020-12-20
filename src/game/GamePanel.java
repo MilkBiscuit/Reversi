@@ -1,11 +1,21 @@
 package game;
 
-import player.*;
-import player.ai.*;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import enumerate.GameMode;
+import player.HumanPlayer;
+import player.ai.AIPlayerDynamic;
+import player.ai.AIPlayerRealtimeKiller;
 
 public class GamePanel extends JPanel implements GameEngine {
 
@@ -27,11 +37,8 @@ public class GamePanel extends JPanel implements GameEngine {
     JLabel tscore1;
     JLabel tscore2;
 
-
-    // GamePlayer player1 = new AIPlayerRealtimeKiller(1,6,true);
-    // GamePlayer player2 = new AIPlayerDynamic(2,6);
-    GamePlayer player1 = new HumanPlayer(1);
-    GamePlayer player2 = new HumanPlayer(2);
+    GamePlayer player1;
+    GamePlayer player2;
 
     Timer player1HandlerTimer;
     Timer player2HandlerTimer;
@@ -46,7 +53,17 @@ public class GamePanel extends JPanel implements GameEngine {
         board[i][j] = value;
     }
 
-    public GamePanel(){
+    public GamePanel(GameMode mode) {
+        switch(mode) {
+            case AI_AI:
+                player1 = new HumanPlayer(1);
+                player2 = new HumanPlayer(2);
+                break;
+            default:
+                player1 = new AIPlayerRealtimeKiller(1, 6, true);
+                player2 = new AIPlayerDynamic(2, 6);
+        }
+
         this.setBackground(Color.WHITE);
         this.setLayout(new BorderLayout());
 

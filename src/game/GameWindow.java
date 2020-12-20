@@ -1,11 +1,14 @@
 package game;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
+import enumerate.GameMode;
 
 public class GameWindow extends JFrame {
 
-    public GameWindow(){
-        GamePanel gp = new GamePanel();
+    public GameWindow(GameMode mode) {
+        GamePanel gp = new GamePanel(mode);
         this.add(gp);
         this.setTitle("Reversi v0.1");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -14,7 +17,7 @@ public class GameWindow extends JFrame {
     }
 
     public static void main(String[] args) {
-        new GameWindow();
+        new GameWindow(GameMode.AI_AI);
     }
 
 }
