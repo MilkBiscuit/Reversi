@@ -1,23 +1,24 @@
 package game;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.border.EmptyBorder;
+
+import enumerate.GameMode;
 
 public class GameWindow extends JFrame {
 
-    public GameWindow(){
-        GamePanel gp = new GamePanel();
+    public GameWindow(GameMode mode) {
+        GamePanel gp = new GamePanel(mode);
+        gp.setBorder(new EmptyBorder(50, 20, 20, 20));
         this.add(gp);
         this.setTitle("Reversi v0.1");
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
-        //this.setSize(500,500);
-
     }
 
     public static void main(String[] args) {
-        new GameWindow();
+        new GameWindow(GameMode.AI_AI);
     }
 
 }
