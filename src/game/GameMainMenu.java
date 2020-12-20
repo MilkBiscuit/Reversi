@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import enumerate.GameMode;
+import game.enumi.GameMode;
 
 public class GameMainMenu {
 
@@ -57,7 +57,6 @@ public class GameMainMenu {
         JFrame gameFrame = new GameWindow(mode);
         gameFrame.pack();
         jFrame.setSize(gameFrame.getSize());
-        jFrame.add(gameFrame);
     }
 
 }

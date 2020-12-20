@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import enumerate.GameMode;
+import game.enumi.*;
 import player.HumanPlayer;
 import player.ai.AIPlayerDynamic;
 import player.ai.AIPlayerRealtimeKiller;

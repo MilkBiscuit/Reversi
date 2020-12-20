@@ -1,4 +1,4 @@
-package enumerate;
+package game.enumi;
 
 
 public enum GameMode {

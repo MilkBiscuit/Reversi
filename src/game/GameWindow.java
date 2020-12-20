@@ -3,7 +3,7 @@ package game;
 import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 
-import enumerate.GameMode;
+import game.enumi.*;
 
 public class GameWindow extends JFrame {
 
