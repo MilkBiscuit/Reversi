@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements GameEngine {
 
     public GamePanel(GameMode mode) {
         switch(mode) {
-            case AI_AI:
+            case HUMAN_HUMAN:
                 player1 = new HumanPlayer(1);
                 player2 = new HumanPlayer(2);
                 break;

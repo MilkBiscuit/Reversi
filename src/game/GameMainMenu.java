@@ -4,8 +4,6 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +17,9 @@ import enumerate.GameMode;
 
 public class GameMainMenu {
 
-    static JButton btnHumanVsHuman, btnHumanVsAi, btnAiVsAi;
+    static JButton btnHumanVsHuman = new JButton("Human vs Human");
+    static JButton btnHumanVsAi = new JButton("Human vs AI");
+    static JButton btnAiVsAi = new JButton("AI vs AI");
 
     public static void main(String[] args) {
 
@@ -29,18 +29,22 @@ public class GameMainMenu {
         jContentPanel.setLayout(new BoxLayout(jContentPanel, BoxLayout.Y_AXIS));
         jFrame.setContentPane(jContentPanel);
 
-        List<JButton> buttonList = Arrays.asList(
-            new JButton("Human vs AI"),
-            new JButton("Human vs Human"),
-            new JButton("AI vs AI")
-        );
+        List<JButton> buttonList = Arrays.asList(btnHumanVsHuman, btnHumanVsAi, btnAiVsAi);
         buttonList.forEach(it -> {
             applyButtonStyle(it);
             jContentPanel.add(it);
         });
-        buttonList.get(0).addActionListener(new ActionListener() {
+        btnHumanVsHuman.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GameWindow(GameMode.HUMAN_AI);
+                // jFrame.setSize(1000, 1000);
+            }
+        });
+        btnAiVsAi.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame gameFrame = new GameWindow(GameMode.AI_AI);
+                gameFrame.pack();
+                jFrame.setSize(gameFrame.getSize());
+                jFrame.add(gameFrame);
             }
         });
         jFrame.pack();
