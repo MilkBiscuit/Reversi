@@ -17,13 +17,12 @@ import enumerate.GameMode;
 
 public class GameMainMenu {
 
-    static JButton btnHumanVsHuman = new JButton("Human vs Human");
-    static JButton btnHumanVsAi = new JButton("Human vs AI");
-    static JButton btnAiVsAi = new JButton("AI vs AI");
+    private static JButton btnHumanVsHuman = new JButton("Human vs Human");
+    private static JButton btnHumanVsAi = new JButton("Human vs AI");
+    private static JButton btnAiVsAi = new JButton("AI vs AI");
+    private static JFrame jFrame = new JFrame("Othello Game");
 
     public static void main(String[] args) {
-
-        JFrame jFrame = new JFrame("Othello Game");
         JPanel jContentPanel = new JPanel();
         jContentPanel.setBorder(new EmptyBorder(100, 100, 100, 100));
         jContentPanel.setLayout(new BoxLayout(jContentPanel, BoxLayout.Y_AXIS));
@@ -36,25 +35,29 @@ public class GameMainMenu {
         });
         btnHumanVsHuman.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // jFrame.setSize(1000, 1000);
+                launchGame(GameMode.HUMAN_HUMAN);
             }
         });
         btnAiVsAi.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JFrame gameFrame = new GameWindow(GameMode.AI_AI);
-                gameFrame.pack();
-                jFrame.setSize(gameFrame.getSize());
-                jFrame.add(gameFrame);
+                launchGame(GameMode.AI_AI);
             }
         });
         jFrame.pack();
         jFrame.setVisible(true);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private static void applyButtonStyle(JButton button) {
         button.setFont(new Font("", Font.PLAIN, 40));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+
+    private static void launchGame(GameMode mode) {
+        JFrame gameFrame = new GameWindow(mode);
+        gameFrame.pack();
+        jFrame.setSize(gameFrame.getSize());
+        jFrame.add(gameFrame);
     }
 
 }
